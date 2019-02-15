@@ -5,6 +5,7 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: 'en'
+    weather_api_key: a5210def1fb1803b89a908f80e6a4acc
 
 services:
     # default configuration for services in *this* file
@@ -26,3 +27,10 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    app.weather:
+        class: App\Weather\Weather
+        arguments:
+            $apiKey: '%weather_api_key%'
+        public: true
+
